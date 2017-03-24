@@ -26,7 +26,10 @@ class RegisterViewController: UIViewController
     
     @IBAction func acceptPressed(_ sender: UIButton)
     {
-        
+        if (usernameField.text?.characters.count)! > 5
+        {
+            createUser(sender: sender)
+        }
     }
     
     @IBAction func backPressed(_ sender: UIButton)
@@ -63,7 +66,17 @@ class RegisterViewController: UIViewController
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        
+        if let destinationVC = segue.destination as? LoginViewController
+        {
+            if let button = sender as? UIButton
+            {
+                if(button.tag == 1)
+                {
+                    destinationVC.emailField.text = emailField.text
+                    destinationVC.passwordField.text = passwordField.text
+                }
+            }
+        }
     }
     
 
