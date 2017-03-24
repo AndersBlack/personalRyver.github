@@ -1,0 +1,6 @@
+framework module Pods_personalRyverTests {
+  umbrella header "Pods-personalRyverTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
