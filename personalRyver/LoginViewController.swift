@@ -17,8 +17,6 @@ class LoginViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("I really wanna push this!")
-        print("yup")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
