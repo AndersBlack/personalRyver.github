@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: UIViewController
 {
@@ -17,12 +18,11 @@ class LoginViewController: UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("I really wanna push this!")
-        print("yup")
         // Do any additional setup after loading the view, typically from a nib.
     }
     
     @IBAction func signInPressed(_ sender: UIButton) {
+        login()
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
@@ -32,6 +32,22 @@ class LoginViewController: UIViewController
     {
         
     }
+    
+    func login()
+    {
+        FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
+        
+            
+            if error == nil {
+            
+                self.performSegue(withIdentifier: "showRooms", sender: nil)
+                
+            }else {
+                 Utility.presentErrorAlert(view: self, error: error)
+            }
+        }
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
