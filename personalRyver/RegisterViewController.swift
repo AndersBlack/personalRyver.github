@@ -7,45 +7,64 @@
 //
 
 import UIKit
+import Firebase
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController
+{
+    let users = FIRDatabase.database().reference(withPath: "users")
     
     @IBOutlet weak var emailField: UITextField!
-    
     @IBOutlet weak var usernameField: UITextField!
-    
     @IBOutlet weak var passwordField: UITextField!
     
-    
-    
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func acceptPressed(_ sender: UIButton) {
+    @IBAction func acceptPressed(_ sender: UIButton)
+    {
+        
     }
     
-    @IBAction func backPressed(_ sender: UIButton) {
+    @IBAction func backPressed(_ sender: UIButton)
+    {
+        performSegue(withIdentifier: "unwindToLogin", sender: nil)
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func createUser(sender: Any)
+    {
+        if let email = emailField.text, let username = usernameField.text
+        {
+            FIRAuth.auth()?.createUser(withEmail: email, password: passwordField.text!)
+            { (user, error) in
+                if error == nil
+                {
+                    let userObj = User(email: email, username: username)
+                    let childRef = self.users.child((user?.uid)!)
+                    childRef.setValue(userObj.toDictionary())
+                    
+                    self.performSegue(withIdentifier: "unwindToLogin", sender: sender)
+                }
+                else
+                {
+                    Utility.presentErrorAlert(view: self, error: error)
+                }
+            }
+        }
     }
-    */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        
+    }
+    
 
 }

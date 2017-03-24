@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2A68C52A1E855211007027E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A68C5291E855211007027E4 /* GoogleService-Info.plist */; };
 		2A68C52C1E855632007027E4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68C52B1E855632007027E4 /* RegisterViewController.swift */; };
+		2A68C52F1E855C5F007027E4 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68C52E1E855C5F007027E4 /* Utility.swift */; };
+		2A68C5321E855CDC007027E4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68C5311E855CDC007027E4 /* User.swift */; };
 		302331F02A593814D275E6FD /* Pods_personalRyver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBD1EE7D51781114A6EFF8E /* Pods_personalRyver.framework */; };
 		39F49EBFC00CFC61733ED975 /* Pods_personalRyverTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B564C90893FCB3CE406D46 /* Pods_personalRyverTests.framework */; };
 		EA2764281E854BE800998379 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2764271E854BE800998379 /* AppDelegate.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		2A68C5291E855211007027E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A68C52B1E855632007027E4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2A68C52E1E855C5F007027E4 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		2A68C5311E855CDC007027E4 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3F7ED1FF3C0D0344FEE4C651 /* Pods-personalRyverTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-personalRyverTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-personalRyverTests/Pods-personalRyverTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E6048F21022B321FC0D4380 /* Pods_personalRyverUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_personalRyverUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		723383E414F1D301EC766048 /* Pods-personalRyver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-personalRyver.release.xcconfig"; path = "Pods/Target Support Files/Pods-personalRyver/Pods-personalRyver.release.xcconfig"; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 			name = views;
 			sourceTree = "<group>";
 		};
+		2A68C5301E855CD1007027E4 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				2A68C52E1E855C5F007027E4 /* Utility.swift */,
+				2A68C5311E855CDC007027E4 /* User.swift */,
+			);
+			name = classes;
+			sourceTree = "<group>";
+		};
 		6CA41157924EF5B233E96264 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +163,7 @@
 		EA2764261E854BE800998379 /* personalRyver */ = {
 			isa = PBXGroup;
 			children = (
+				2A68C5301E855CD1007027E4 /* classes */,
 				2A68C52D1E855637007027E4 /* views */,
 				EA2764271E854BE800998379 /* AppDelegate.swift */,
 				2A68C5291E855211007027E4 /* GoogleService-Info.plist */,
@@ -464,8 +478,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A68C52F1E855C5F007027E4 /* Utility.swift in Sources */,
 				2A68C52C1E855632007027E4 /* RegisterViewController.swift in Sources */,
 				EA27642A1E854BE800998379 /* LoginViewController.swift in Sources */,
+				2A68C5321E855CDC007027E4 /* User.swift in Sources */,
 				EA2764281E854BE800998379 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
