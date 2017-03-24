@@ -8,14 +8,29 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class LoginViewController: UIViewController
+{
+    @IBOutlet weak var emailField: UITextField!
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("I really wanna push this!")
         print("yup")
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func signInPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func registerPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func unwindToLogin(segue: UIStoryboardSegue)
+    {
+        
     }
 
     override func didReceiveMemoryWarning() {
