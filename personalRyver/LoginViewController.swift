@@ -26,6 +26,7 @@ class LoginViewController: UIViewController
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
+		
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue)
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController
             if error == nil {
             
                 self.performSegue(withIdentifier: "showRooms", sender: nil)
+				
                 
             }else {
                  Utility.presentErrorAlert(view: self, error: error)
