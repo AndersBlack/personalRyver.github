@@ -20,6 +20,13 @@ class RegisterViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+		//Looks for single or multiple taps.
+		let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+		
+		//Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+		//tap.cancelsTouchesInView = false
+		
+		view.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
     }
@@ -29,12 +36,14 @@ class RegisterViewController: UIViewController
         if (usernameField.text?.characters.count)! > 5
         {
             createUser(sender: sender)
+			dismissKeyboard()
         }
     }
     
     @IBAction func backPressed(_ sender: UIButton)
     {
         performSegue(withIdentifier: "unwindToLogin", sender: nil)
+		dismissKeyboard()
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,8 +56,10 @@ class RegisterViewController: UIViewController
         if let email = emailField.text, let username = usernameField.text
         {
             FIRAuth.auth()?.createUser(withEmail: email, password: passwordField.text!)
-            { (user, error) in
-                if error == nil
+            {
+				(user, error) in
+				
+				if error == nil
                 {
                     let userObj = User(email: email, username: username)
                     let childRef = self.users.child((user?.uid)!)
@@ -56,6 +67,7 @@ class RegisterViewController: UIViewController
                     
                     self.performSegue(withIdentifier: "unwindToLogin", sender: sender)
                 }
+					
                 else
                 {
                     Utility.presentErrorAlert(view: self, error: error)
@@ -78,6 +90,12 @@ class RegisterViewController: UIViewController
             }
         }
     }
-    
+	
+	//Calls this function when the tap is recognized.
+	func dismissKeyboard() {
+		//Causes the view (or one of its embedded text fields) to resign the first responder status.
+		view.endEditing(true)
+	}
+	
 
 }

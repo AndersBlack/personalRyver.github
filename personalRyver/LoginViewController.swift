@@ -26,6 +26,7 @@ class LoginViewController: UIViewController
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
+		
     }
     
     @IBAction func unwindToLogin(segue: UIStoryboardSegue)
@@ -37,12 +38,10 @@ class LoginViewController: UIViewController
     {
         FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
         
-            
             if error == nil
             {
                 self.loadUser(userID: (user?.uid)!)
                 self.performSegue(withIdentifier: "ShowRooms", sender: nil)
-                
             }
             else
             {
