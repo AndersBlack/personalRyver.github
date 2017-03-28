@@ -47,8 +47,10 @@ class RegisterViewController: UIViewController
         if let email = emailField.text, let username = usernameField.text
         {
             FIRAuth.auth()?.createUser(withEmail: email, password: passwordField.text!)
-            { (user, error) in
-                if error == nil
+            {
+				(user, error) in
+				
+				if error == nil
                 {
                     let userObj = User(email: email, username: username)
                     let childRef = self.users.child((user?.uid)!)
@@ -56,6 +58,7 @@ class RegisterViewController: UIViewController
                     
                     self.performSegue(withIdentifier: "unwindToLogin", sender: sender)
                 }
+					
                 else
                 {
                     Utility.presentErrorAlert(view: self, error: error)

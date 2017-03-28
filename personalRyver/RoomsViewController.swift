@@ -37,7 +37,7 @@ class RoomsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "roomCell", for: indexPath)
         /*
         let userID = tableKeys[indexPath.row]
         let user = tableItems[indexPath.row]
