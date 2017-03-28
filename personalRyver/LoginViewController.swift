@@ -38,16 +38,29 @@ class LoginViewController: UIViewController
         FIRAuth.auth()?.signIn(withEmail: emailField.text!, password: passwordField.text!) { (user, error) in
         
             
-            if error == nil {
-            
-                self.performSegue(withIdentifier: "showRooms", sender: nil)
+            if error == nil
+            {
+                self.loadUser(userID: (user?.uid)!)
+                self.performSegue(withIdentifier: "ShowRooms", sender: nil)
                 
-            }else {
+            }
+            else
+            {
                  Utility.presentErrorAlert(view: self, error: error)
             }
         }
     }
     
+    func loadUser(userID:String)
+    {
+        let users = FIRDatabase.database().reference(withPath: "users")
+        users.child(userID).observeSingleEvent(of: .value, with:
+            { (snapshot) in
+                let user = User(snapshot: snapshot)
+                Utility.userID = userID
+                Utility.user = user
+        })
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
